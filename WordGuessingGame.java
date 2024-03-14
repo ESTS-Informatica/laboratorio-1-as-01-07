@@ -13,7 +13,7 @@ public class WordGuessingGame {
 
     public void play() {
         showWelcome();
-        guess();
+        guess(guessedWord);
         showGuessedWord();
         showResult();
     }
@@ -26,9 +26,8 @@ public class WordGuessingGame {
         System.out.println(guessedWord);
     }
 
-    private void guess() {
-        inputReader.getChar(guessedWord);
-
+    private void guess(String letter) {
+        inputReader.getChar(letter);
     }
 
     private void showResult() {
