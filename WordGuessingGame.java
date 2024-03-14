@@ -13,8 +13,11 @@ public class WordGuessingGame {
 
     public void play() {
         showWelcome();
-        guess(guessedWord);
-        showGuessedWord();
+        while (!guessedWord.equals(hiddenWord)) {
+            guess();
+            showGuessedWord();
+            numberOfTries++;
+        }
         showResult();
     }
 
@@ -26,12 +29,25 @@ public class WordGuessingGame {
         System.out.println(guessedWord);
     }
 
-    private void guess(String letter) {
-        inputReader.getChar(letter);
+    private void guess() {
+        char guessChar = inputReader.getChar("Guess a letter: ");
+        boolean found = false;
+        StringBuilder newGuessedWord = new StringBuilder(guessedWord);
+        for (int i = 0; i < hiddenWord.length(); i++) {
+            if (hiddenWord.charAt(i) == guessChar && guessedWord.charAt(i) == '_') {
+                newGuessedWord.setCharAt(i, guessChar);
+                found = true;
+            }
+        }
+        if (!found) {
+            System.out.println("Incorrect guess!");
+        }
+        guessedWord = newGuessedWord.toString();
     }
 
     private void showResult() {
-        if (hiddenWord == guessedWord) {
+        if (guessedWord.equals(hiddenWord)) {
+            System.out.println("Parabéns! :D");
             System.out.println("Numero de tentativas: " + numberOfTries);
         }
     }
