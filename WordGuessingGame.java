@@ -1,5 +1,9 @@
 public class WordGuessingGame {
     private String hiddenWord;
-    private static String guessedWord;
+    private String guessedWord;
     private int numberOfTries;
+
+    public WordGuessingGame() {
+
+    }
 }
