@@ -51,6 +51,7 @@ public class WordGuessingGame {
         if (guessedWord.equals(hiddenWord)) {
             System.out.println("Parabéns! :D");
             System.out.println("Numero de tentativas: " + numberOfTries);
+            reset();
         }
     }
 
@@ -84,5 +85,11 @@ public class WordGuessingGame {
             guessed.append("_");
         }
         return guessed.toString();
+    }
+
+    public void reset() {
+        hiddenWord = wordGenerator.generateWord();
+        guessedWord = initializeGuessedWord();
+        numberOfTries = 0;
     }
 }
