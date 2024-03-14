@@ -11,16 +11,30 @@ public class WordGuessingGame {
         this.inputReader = new InputReader();
     }
 
+    public void play() {
+        showWelcome();
+        guess();
+        showGuessedWord();
+        showResult();
+    }
+
     public void showWelcome() {
         System.out.println("Olaaaaaaa");
     }
 
-    public void showGuessedWord() {
+    private void showGuessedWord() {
         System.out.println(guessedWord);
     }
 
-    public void play() {
-        return;
+    private void guess() {
+        inputReader.getChar(guessedWord);
+
+    }
+
+    private void showResult() {
+        if (hiddenWord == guessedWord) {
+            System.out.println("Numero de tentativas: " + numberOfTries);
+        }
     }
 
     public String getHiddenWord() {
@@ -45,10 +59,5 @@ public class WordGuessingGame {
 
     public void setNumberOfTries(int numberOfTries) {
         this.numberOfTries = numberOfTries;
-    }
-
-    public void guess() {
-        inputReader.getChar(guessedWord);
-    
     }
 }
